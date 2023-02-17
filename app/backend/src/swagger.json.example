@@ -1,0 +1,458 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Restricted CPF API",
+        "version": "1.0.0",
+        "description": "Atualmente, o time de análise antifraude do e-commerce realiza o controle de CPFs em uma planilha eletrônica, na qual são adicionados os CPFs com risco de fraude. No entanto, devido ao aumento da base de clientes, tem se tornado cada vez mais difícil manter este controle de forma manual. Diante disso, o Product Owner do time identificou os principais requisitos funcionais para o desenvolvimento de um sistema que possa controlar os CPFs adicionados, mantendo-os em uma lista restrita.",
+        "termsOfService": "http://localhost:3000/terms/",
+        "contact": {
+            "email": "gabrielproencaaraujo@gmail.com"
+        }        
+    },
+    "server": [
+        {
+            "url": "http://localhost:3000/",
+            "description": "Aplicação Local"
+        }
+    ],
+    "schemes": [
+        "https",
+        "http"
+        ],
+    "paths": {
+        "/user": {
+            "post": {
+               "tags":["User"],
+               "security": [{"bearerAuth": []}],
+               "summary": "Cria um novo usúario" ,
+               "description": "Rota que é responsável por criar um novo usuário, para que o usuário seja criado é necessário enviar um nome, um password e uma role, para executar esse endponint também é necessário ter autorização, para isso um usuário root já foi criado (se o comando npm run db:init ou npm run db:reset, foi rodado), para executar essa operação utilize o TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJuYW1lIjoicm9vdCIsInBhc3N3b3JkIjoiJDJhJDEwJDlCUk44L1JxUnhWNS5CMlQ5UDNucE9acnV3MVpQYkovNWU5OUQ0SlhMdC5TcDRTSC9tMUVHIiwicm9sZSI6ImFkbWluIn0sIl9wcmV2aW91c0RhdGFWYWx1ZXMiOnsiaWQiOjEsIm5hbWUiOiJyb290IiwicGFzc3dvcmQiOiIkMmEkMTAkOUJSTjgvUnFSeFY1LkIyVDlQM25wT1pydXcxWlBiSi81ZTk5RDRKWEx0LlNwNFNIL20xRUciLCJyb2xlIjoiYWRtaW4ifSwidW5pcW5vIjoxLCJfY2hhbmdlZCI6e30sIl9vcHRpb25zIjp7ImlzTmV3UmVjb3JkIjpmYWxzZSwiX3NjaGVtYSI6bnVsbCwiX3NjaGVtYURlbGltaXRlciI6IiIsInJhdyI6dHJ1ZSwiYXR0cmlidXRlcyI6WyJpZCIsIm5hbWUiLCJwYXNzd29yZCIsInJvbGUiXX0sImlzTmV3UmVjb3JkIjpmYWxzZSwiaWF0IjoxNjc2MzE4MDAzLCJleHAiOjE2NzY5MjI4MDN9.Qrsp2kIrWx7eNdHQq7CU-z0YASzmYBUAH3SBeT2AgzQ",
+               "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/UserCreateBody" 
+                        }
+                    }
+                }
+            }, 
+            "responses": {
+                    "201": {
+                        "description": "Mensagem se um novo usuário foi criado",
+                        "content": {
+                           "application/json": {
+                               "schema" :{
+                                   "type": "object",
+                                   "$ref": "#/components/schemas/Message"                                   
+                               },
+                               "examples": {
+                                "User": {
+                                    "value": {
+                                        "message": "User 'ProductOwner' successfully created"
+                                    }
+                                }
+                            }
+                           }
+                        }
+                    },
+                    "400" : {
+                        "description": "Mensagem se algum campo não foi enviado",
+                        "content": {
+                            "application/json": {
+                                "schema" :{
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Message"                                   
+                                },
+                                "examples": {
+                                    "CPF": {
+                                        "value": {
+                                            "message": "All fields must be filled"
+                                        }
+                                    }
+                                }
+                            }
+                         }
+                    },
+                    "409" : {
+                        "description": "Mensagem se o usuário ja existe",
+                        "content": {
+                            "application/json": {
+                                "schema" :{
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Message"                                   
+                                },
+                                "examples": {
+                                    "CPF": {
+                                        "value": {
+                                            "message": "UserAlreadyExist"
+                                        }
+                                    }
+                                }
+                            }
+                         }
+                    }
+                }
+            }
+        },
+        "/login": {
+            "post": {
+               "tags":["Login"],
+               "summary": "Faz login de um usuário" ,
+               "description": "Rota responsável por fazer o login do usuário, se o usuário for da role admin é retornado um token que inserido ao header no parâmetro “Authorization” torna possível que esse usuário faça a gestão da tabela de CPFs restritos, como adicionar um novo CPF ou deletar um CPF na tabela. DICA: Copie token retornado aqui, para utilizar os endpoint POST /cpf e DELETE /cpf/{cpf}. Se o usuário não  tiver permissão, ele não recebe o token",
+               "requestBody": {
+                "content": {
+                    "application/json": {
+                        "schema": {
+                            "$ref": "#/components/schemas/UserLoginBody" 
+                        }
+                    }
+                }
+            }, 
+            "responses": {
+                "200" : {
+                    "description": "Mensagem se o login foi realizado com sucesso",
+                        "content": {
+                           "application/json": {
+                               "schema" :{
+                                   "type": "object",
+                                   "$ref": "#/components/schemas/Message"                                   
+                               },
+                               "examples": {
+                                "UserAdmin": {
+                                    "value": {
+                                        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJuYW1lIjoicm9vdCIsInBhc3N3b3JkIjoiJDJhJDEwJDlCUk44L1JxUnhWNS5CMlQ5UDNucE9acnV3MVpQYkovNWU5OUQ0SlhMdC5TcDRTSC9tMUVHIiwicm9sZSI6ImFkbWluIn0sIl9wcmV2aW91c0RhdGFWYWx1ZXMiOnsiaWQiOjEsIm5hbWUiOiJyb290IiwicGFzc3dvcmQiOiIkMmEkMTAkOUJSTjgvUnFSeFY1LkIyVDlQM25wT1pydXcxWlBiSi81ZTk5RDRKWEx0LlNwNFNIL20xRUciLCJyb2xlIjoiYWRtaW4ifSwidW5pcW5vIjoxLCJfY2hhbmdlZCI6e30sIl9vcHRpb25zIjp7ImlzTmV3UmVjb3JkIjpmYWxzZSwiX3NjaGVtYSI6bnVsbCwiX3NjaGVtYURlbGltaXRlciI6IiIsInJhdyI6dHJ1ZSwiYXR0cmlidXRlcyI6WyJpZCIsIm5hbWUiLCJwYXNzd29yZCIsInJvbGUiXX0sImlzTmV3UmVjb3JkIjpmYWxzZSwiaWF0IjoxNjc2MzE4MDAzLCJleHAiOjE2NzY5MjI4MDN9.Qrsp2kIrWx7eNdHQq7CU-z0YASzmYBUAH3SBeT2AgzQ"
+                                    }
+                                },
+                                "User": {
+                                    "value": {
+                                        "message": "User DevJunior logged in"
+                                    }
+                                }
+                            }
+                           }
+                        }
+                },
+                "400": {
+                        "description": "Mensagem se estiver faltando algum campo de login",
+                        "content": {
+                           "application/json": {
+                               "schema" :{
+                                   "type": "object",
+                                   "$ref": "#/components/schemas/Message"                                   
+                               },
+                               "examples": {
+                                "User": {
+                                    "value": {
+                                        "message": "All fields must be filled"
+                                    }
+                                }
+                            }
+                           }
+                        }
+                    },
+                    "401" : {
+                        "description": "Mensagem se algum campo estiver com a informação errada",
+                        "content": {
+                            "application/json": {
+                                "schema" :{
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Message"                                   
+                                },
+                                "examples": {
+                                    "CPF": {
+                                        "value": {
+                                            "message": "Incorrect email or password"
+                                        }
+                                    }
+                                }
+                            }
+                         }
+                    }
+                }
+            }
+        },
+        "/cpf": {
+            "post": {
+               "summary": "Cadatro de CPF na lista restrita" ,
+               "description": "Rota responsável por adicionar um CPF na lista restrita para consulta futura. Para executar esse endpoint, é necessário autorização, para isso é o usuário pode usar o token retornado no endpoint /login, ou utilizar o token do usuário root TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJuYW1lIjoicm9vdCIsInBhc3N3b3JkIjoiJDJhJDEwJDlCUk44L1JxUnhWNS5CMlQ5UDNucE9acnV3MVpQYkovNWU5OUQ0SlhMdC5TcDRTSC9tMUVHIiwicm9sZSI6ImFkbWluIn0sIl9wcmV2aW91c0RhdGFWYWx1ZXMiOnsiaWQiOjEsIm5hbWUiOiJyb290IiwicGFzc3dvcmQiOiIkMmEkMTAkOUJSTjgvUnFSeFY1LkIyVDlQM25wT1pydXcxWlBiSi81ZTk5RDRKWEx0LlNwNFNIL20xRUciLCJyb2xlIjoiYWRtaW4ifSwidW5pcW5vIjoxLCJfY2hhbmdlZCI6e30sIl9vcHRpb25zIjp7ImlzTmV3UmVjb3JkIjpmYWxzZSwiX3NjaGVtYSI6bnVsbCwiX3NjaGVtYURlbGltaXRlciI6IiIsInJhdyI6dHJ1ZSwiYXR0cmlidXRlcyI6WyJpZCIsIm5hbWUiLCJwYXNzd29yZCIsInJvbGUiXX0sImlzTmV3UmVjb3JkIjpmYWxzZSwiaWF0IjoxNjc2MzE4MDAzLCJleHAiOjE2NzY5MjI4MDN9.Qrsp2kIrWx7eNdHQq7CU-z0YASzmYBUAH3SBeT2AgzQ",
+                "tags":["CPF"],
+                "security": [{"bearerAuth": []}],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/CPFReq"
+                            },
+                            "examples": {
+                                "CPF": {
+                                    "value": {
+                                        "cpf": "64852893055"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "CPF adicionado a lista de restritos"
+                    },
+                    "400" : {
+                        "description": "Mensagem se o número do CPF for invalido",
+                        "content": {
+                            "application/json": {
+                                "schema" :{
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Message"                                   
+                                },
+                                "examples": {
+                                    "CPF": {
+                                        "value": {
+                                            "message": "InvalidCpfException"
+                                        }
+                                    }
+                                }
+                            }
+                         }
+                    },
+                    "409" : {
+                        "description": "Mensagem se o CPF já existe na tabela",
+                        "content": {
+                            "application/json": {
+                                "schema" :{
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Message"                                   
+                                },
+                                "examples": {
+                                    "CPF": {
+                                        "value": {
+                                            "message": "ExistsCpfException"
+                                        }
+                                    }
+                                }
+                            }
+                         }
+                    }
+                }
+            },
+            "get": {
+                "summary": "Lista todos os CPF na lista de restritos" ,
+                "description": "Rota onde é possível visualizar todos os CPFs que estão na lista restrita para gerar um relatório de controle de CPFs",
+                 "tags":["CPF"],
+                 "responses": {
+                     "200": {
+                         "description": "Array com todos os CPF da lista de restritos",
+                         "content": {
+                            "application/json": {
+                                "schema" :{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/CPFRes"
+                                    }
+                                    
+                                }
+                            }
+                         }
+                     }
+                 }
+             }
+        },
+        "/cpf/{cpf}": {
+            "get": {
+               "summary": "Busca de um CPF pelo número" ,
+               "description": "Rota responsável para verificar se um CPF esta na lista restrita",
+                "tags":["CPF"],
+                "parameters": [
+                    {
+                        "name": "cpf",
+                        "in": "path",
+                        "description": "Número do cpf",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Retorna o CPF procurado e a data de criação no formato ISO 8601 - UTC.",
+                        "content": {
+                           "application/json": {
+                               "schema" :{
+                                   "type": "object",
+                                   "$ref": "#/components/schemas/CPFRes"                                   
+                               },
+                               "examples": {
+                                "CPF": {
+                                    "value": {
+                                        "cpf": "64852893055",
+                                        "createdAt":  "2023-02-12T17:52:33.000Z"
+                                    }
+                                }
+                            }
+                           }
+                        }
+                    },
+                    "400" : {
+                        "description": "Mensagem se o número do CPF for invalido",
+                        "content": {
+                            "application/json": {
+                                "schema" :{
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Message"                                   
+                                },
+                                "examples": {
+                                    "CPF": {
+                                        "value": {
+                                            "message": "InvalidCpfException"
+                                        }
+                                    }
+                                }
+                            }
+                         }
+                    },
+                    "404" : {
+                        "description": "Mensagem se o CPF não existe no banco de dados",
+                        "content": {
+                            "application/json": {
+                                "schema" :{
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Message"                                   
+                                },
+                                "examples": {
+                                    "CPF": {
+                                        "value": {
+                                            "message": "NotFoundCpfException"
+                                        }
+                                    }
+                                }
+                            }
+                         }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Deleta um CPF pelo número" ,
+                "description": "Rota responsável por deletar um CPF está na lista restrita. Para executar esse endpoint, é necessário autorização, para isso o usuário pode usar o token retornado no endpoint /login, ou utilizar o token do usuário root TOKEN: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhVmFsdWVzIjp7ImlkIjoxLCJuYW1lIjoicm9vdCIsInBhc3N3b3JkIjoiJDJhJDEwJDlCUk44L1JxUnhWNS5CMlQ5UDNucE9acnV3MVpQYkovNWU5OUQ0SlhMdC5TcDRTSC9tMUVHIiwicm9sZSI6ImFkbWluIn0sIl9wcmV2aW91c0RhdGFWYWx1ZXMiOnsiaWQiOjEsIm5hbWUiOiJyb290IiwicGFzc3dvcmQiOiIkMmEkMTAkOUJSTjgvUnFSeFY1LkIyVDlQM25wT1pydXcxWlBiSi81ZTk5RDRKWEx0LlNwNFNIL20xRUciLCJyb2xlIjoiYWRtaW4ifSwidW5pcW5vIjoxLCJfY2hhbmdlZCI6e30sIl9vcHRpb25zIjp7ImlzTmV3UmVjb3JkIjpmYWxzZSwiX3NjaGVtYSI6bnVsbCwiX3NjaGVtYURlbGltaXRlciI6IiIsInJhdyI6dHJ1ZSwiYXR0cmlidXRlcyI6WyJpZCIsIm5hbWUiLCJwYXNzd29yZCIsInJvbGUiXX0sImlzTmV3UmVjb3JkIjpmYWxzZSwiaWF0IjoxNjc2MzE4MDAzLCJleHAiOjE2NzY5MjI4MDN9.Qrsp2kIrWx7eNdHQq7CU-z0YASzmYBUAH3SBeT2AgzQ",
+                 "tags":["CPF"],
+                 "security": [{"bearerAuth": []}],
+                 "parameters": [
+                     {
+                         "name": "cpf",
+                         "in": "path",
+                         "description": "Número do cpf",
+                         "required": true
+                     }
+                 ],
+                 "responses": {
+                     "204": {
+                         "description": "Deleta um CPF da lista de restritos"
+                     },
+                     "400" : {
+                         "description": "Mensagem se o número do CPF for invalido",
+                         "content": {
+                             "application/json": {
+                                 "schema" :{
+                                     "type": "object",
+                                     "$ref": "#/components/schemas/Message"                                   
+                                 },
+                                 "examples": {
+                                     "CPF": {
+                                         "value": {
+                                             "message": "InvalidCpfException"
+                                         }
+                                     }
+                                 }
+                             }
+                          }
+                     },
+                     "404" : {
+                         "description": "Mensagem se o CPF não existe no banco de dados",
+                         "content": {
+                             "application/json": {
+                                 "schema" :{
+                                     "type": "object",
+                                     "$ref": "#/components/schemas/Message"                                   
+                                 },
+                                 "examples": {
+                                     "CPF": {
+                                         "value": {
+                                             "message": "NotFoundCpfException"
+                                         }
+                                     }
+                                 }
+                             }
+                          }
+                     }
+                 }
+             }
+        }
+       
+    },
+    "components": {
+        "schemas": {
+            "CPFReq" : {
+                "type": "object",
+                "properties": {
+                    "cpf": {
+                        "type": "string"
+                    } 
+                }
+            },
+            "CPFRes" : {
+                "type": "object",
+                "properties": {
+                    "cpf": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    } 
+                }
+            },
+            "Message" : {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserCreateBody" : {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "ProductOwner"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "adm_password"
+                    },
+                    "role": {
+                        "type": "string",
+                        "example": "admin"
+                    } 
+                }
+            },
+            "UserLoginBody" : {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "ProductOwner"
+                    },
+                    "password": {
+                        "type": "string",
+                        "example": "adm_password"
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "apiKey",
+                "name": "Authorization",
+                "in": "header",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    }
+}
