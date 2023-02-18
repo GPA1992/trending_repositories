@@ -1,18 +1,9 @@
-interface ServiceResponse {
-    type: number;
-    message: string | [] | object;
+type RepositoryType = {
+    name: string
+    description: string
+    stars: string
+    language: string
+    link: string
 }
 
-interface CPFresponse {
-    cpf: string;
-    createdAt: Date;
-}
-
-interface UserType {
-    id?: number;
-    name: string;
-    role: string;
-    password: string;
-}
-
-export { ServiceResponse, CPFresponse, UserType };
+export { RepositoryType }

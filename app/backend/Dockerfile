@@ -1,21 +1,13 @@
-FROM node:14
+FROM node:16.14-alpine
 
-COPY package*.json ./
+WORKDIR /app-backend
 
-WORKDIR  /app-backend
-
+COPY package.json .
+COPY . .
 RUN npm install
 
-COPY . .
 
-ENV DB_HOST=db
-ENV DB_PORT=3306
-ENV DB_USER=root
-ENV DB_PASSWORD=example
-ENV DB_NAME=mydatabase
-
-EXPOSE 5000
-
+EXPOSE 3001
 
 ENTRYPOINT ["npm", "run"]
 CMD [ "dev"]

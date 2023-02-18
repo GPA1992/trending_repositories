@@ -1,22 +1,8 @@
-import fetch from 'node-fetch';
-import Repository from './model';
+import axios from 'axios';
+import Repository from '../../database/models/repository.model';
 
 class GithubAPIService {
-  static async fetchRepositories(language, stars) {
-    const response = await fetch(
-      `https://api.github.com/search/repositories?q=language:${language}+stars:${stars}&sort=stars&order=desc`
-    );
-    const data = await response.json();
-    const repositories = data.items.map((item) => ({
-      name: item.name,
-      description: item.description,
-      stars: item.stargazers_count,
-      language: item.language,
-    }));
-    return repositories;
-  }
-
-  static async saveRepositories(repositories) {
+ /*  static async saveRepositories(repositories) {
     try {
       await Repository.sync();
       await Repository.bulkCreate(repositories);
@@ -54,7 +40,7 @@ class GithubAPIService {
     } catch (error) {
       console.error(`Error viewing repository: ${error}`);
     }
-  }
+  } */
 }
 
 export default GithubAPIService;

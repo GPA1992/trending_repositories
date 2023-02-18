@@ -1,6 +1,4 @@
 import express from 'express';
-import swaggerUi from 'swagger-ui-express';
-import { UserRoutes, LoginRoutes } from './routes';
 
 class App {
     public app: express.Express;
@@ -9,7 +7,6 @@ class App {
 
         this.config();
 
-        // Não remover essa rota
         this.app.get('/', (req, res) => res.json({ ok: true }));
     }
 
@@ -25,8 +22,6 @@ class App {
         };
         this.app.use(express.json());
         this.app.use(accessControl);
-        this.app.use('/user', UserRoutes);
-        this.app.use('/login', LoginRoutes);
     }
 
     public start(PORT: string | number): void {

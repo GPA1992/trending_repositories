@@ -1,4 +1,3 @@
-import CPFService from './CPF/cpf.service';
-import UserService from './user/users.service'
+import GithubAPIService from './repository/githubAPIService.service'
 
-export {CPFService, UserService };
+export { GithubAPIService }
