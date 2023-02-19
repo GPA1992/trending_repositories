@@ -1,12 +1,10 @@
-FROM node:14
-
-COPY package*.json ./
+FROM node:16.14-alpine
 
 WORKDIR /app-frontend
 
-RUN npm install
-
+COPY package.json .
 COPY . .
+RUN npm install
 
 EXPOSE 5173
 

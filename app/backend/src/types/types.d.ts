@@ -1,9 +1,27 @@
-type RepositoryType = {
-    name: string
-    description: string
-    stars: string
-    language: string
-    link: string
+type RepositoryUtils = {
+    owner: string,
+    ownerRepo: string,
+    ownerAvatar: string,
+    repoName: string,
+    description: string,
+    stars: number,
+    forks: number,
+    language: string,
+    repoLink: string
 }
 
-export { RepositoryType }
+type RepositoryResponse = {
+    owner: {
+        login: string,
+        avatar_url: string,
+        html_url: string
+    },    
+    name: string,
+    description: string,
+    stargazers_count: number,
+    forks_count: number,
+    language: string,
+    html_url: string
+}
+
+export { RepositoryUtils, RepositoryResponse }

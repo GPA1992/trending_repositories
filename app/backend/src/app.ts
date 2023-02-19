@@ -1,4 +1,5 @@
 import express from 'express';
+import { repositoryRoute } from './routes';
 
 class App {
     public app: express.Express;
@@ -22,6 +23,7 @@ class App {
         };
         this.app.use(express.json());
         this.app.use(accessControl);
+        this.app.use('/repositories', repositoryRoute)
     }
 
     public start(PORT: string | number): void {
