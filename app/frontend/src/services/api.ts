@@ -1,9 +1,14 @@
 import axios from 'axios';
 
-export default axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
-    timeout: 10000,
-    headers: {
-        'Content-Types': 'aplication/json'
-    },
+const api = axios.create({
+  baseURL: `http://localhost:3001`,
 });
+
+
+export const requestData = async (endpoint: string) => {
+  const { data } = await api.get(endpoint);
+  return data;
+};
+
+
+export default api;

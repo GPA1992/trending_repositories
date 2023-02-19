@@ -1,5 +1,6 @@
 import express from 'express';
 import { repositoryRoute } from './routes';
+import cors from 'cors';
 
 class App {
 	public app: express.Express;
@@ -21,6 +22,7 @@ class App {
 			res.header('Access-Control-Allow-Headers', '*');
 			next();
 		};
+		this.app.use(cors());
 		this.app.use(express.json());
 		this.app.use(accessControl);
 		this.app.use('/repositories', repositoryRoute);

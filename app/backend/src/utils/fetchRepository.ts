@@ -1,13 +1,14 @@
 import axios from 'axios';
 import repositoriesName from './repositoriesName';
-import { RepositoryUtils, RepositoryResponse } from '../types/types';
+import { TRepositoryUtils, TRepositoryResponse } from '../types/types';
+import 'dotenv/config';
 
 class FetchGithubRepository {
-	static getRepositoriesData = async (repoList): Promise<RepositoryResponse[]> => {
+	static getRepositoriesData = async (repoList): Promise<TRepositoryResponse[]> => {	
 		const config = {
-			headers: { Authorization: `Bearer ${'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'}` }
+			headers: { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` }
 		};
-		const repositories: RepositoryResponse[] = repoList.map(async ({owner, repo}) => {
+		const repositories: TRepositoryResponse[] = repoList.map(async ({owner, repo}) => {
 			const response = await axios.get(`https://api.github.com/repos/${owner}/${repo}`, config);
 			return response.data;
 		});
@@ -17,12 +18,12 @@ class FetchGithubRepository {
 	};
 
 
-	static fetchRepositories = async (language: string): Promise<RepositoryUtils[]> => {
+	static fetchRepositories = async (language: string): Promise<TRepositoryUtils[]> => {
 		const repoList = await repositoriesName(`https://github.com/trending/${language}?since=daily`);
  
-		const fetchTrendingRepositories: RepositoryResponse[] = await this.getRepositoriesData(repoList);   
+		const fetchTrendingRepositories: TRepositoryResponse[] = await this.getRepositoriesData(repoList);   
     
-		const repositories: RepositoryUtils[] = fetchTrendingRepositories.map((item: RepositoryResponse) => ({
+		const repositories: TRepositoryUtils[] = fetchTrendingRepositories.map((item: TRepositoryResponse) => ({
 			owner: item.owner.login,
 			ownerRepo: item.owner.html_url,
 			ownerAvatar: item.owner.avatar_url,
