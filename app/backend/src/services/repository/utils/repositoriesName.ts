@@ -18,7 +18,6 @@ const getRepositoryAndUserNames = async (url) => {
 		return repoNames;
 	} catch (error) {
 		console.error(error);
-		return [];
 	}
 };
 

@@ -1,6 +1,6 @@
-import { GithubAPIService }from '../services';
+import { GithubAPIService }from '../..';
 import FetchGithubRepository from './fetchRepository';
-import languages from './languageList';
+import languages from '../../../utils/languageList';
 
 
 const trendingReposAtt = async () => {

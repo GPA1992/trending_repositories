@@ -10,17 +10,24 @@
     "dev": "nodemon -r dotenv/config src/server.ts"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "@types/chai-http": "^4.2.0",
     "@types/cheerio": "^0.22.31",
     "@types/express": "^4.17.15",
     "@types/node": "^18.11.18",
     "@types/sequelize": "^4.28.14",
+    "@types/sinon": "^10.0.13",
     "@typescript-eslint/eslint-plugin": "^5.47.1",
     "@typescript-eslint/parser": "^5.47.1",
+    "chai": "^4.3.7",
+    "chai-http": "^4.3.0",
     "cheerio": "^1.0.0-rc.12",
     "eslint": "^8.30.0",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.20",
     "sequelize-cli": "^6.5.2",
+    "sinon": "^15.0.1",
+    "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.9.4"
   },
@@ -29,6 +36,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "jest": "^29.4.3",
     "sequelize": "^6.28.0"
   }
 }

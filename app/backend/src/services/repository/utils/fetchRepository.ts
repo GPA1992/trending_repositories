@@ -1,6 +1,6 @@
 import axios from 'axios';
 import repositoriesName from './repositoriesName';
-import { TRepositoryUtils, TRepositoryResponse } from '../types/types';
+import { TRepositoryUtils, TRepositoryResponse } from '../../../types/types';
 import 'dotenv/config';
 
 class FetchGithubRepository {
