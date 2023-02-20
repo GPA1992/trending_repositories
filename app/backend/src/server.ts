@@ -1,5 +1,5 @@
 import { App } from './app';
-import trendingReposAtt from './utils/trendingRepoAttOnDB';
+import trendingReposAtt from './services/repository/utils/trendingRepoAttOnDB';
 
 
 import 'dotenv/config';

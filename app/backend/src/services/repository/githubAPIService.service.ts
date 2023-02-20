@@ -10,38 +10,42 @@ class GithubAPIService {
 			await Repository.bulkCreate(repositories);
 			console.log('Repositories saved successfully');
 		} catch (error) {
-			console.error(`Error saving repositories: ${error}`);
+			return error.message;
 		}
 	};
 
 	static listRepositories = async (): Promise<Record<string, TRepositoryUtils[]>> => {
-		try {
+		try {			
 			const repositories = await Repository.findAll({
 				where: {
 					language: {[Op.ne]: null},
 				},
-			}).then((result) => result.map((lang) => lang.get({ plain: true })));
-			const groupedRepos= _.groupBy(repositories, 'language');		
+			});
+
+			const groupedRepos= _.groupBy(repositories, 'language');	
+				
 			return groupedRepos;
+
 		} catch (error) {
-			console.error(`Error listing repositories: ${error}`);
+			return error.message;
 		}
 	};
 
-	static findRepositoryByLanguage = async (language: string): Promise<TRepositoryUtils[]> => {
+	static listRepositoryByLanguage = async (language: string): Promise<TRepositoryUtils[]> => {
 		try {
 			const repository = await Repository.findAll({ where: { language} });
 			return repository;
 		} catch (error) {
-			console.error(`Error viewing repository: ${error}`);
+			return error.message;
 		}
 	};
 
 	static deletaAllRepository = async () => {
 		try {
 			await Repository.destroy({ where: {} });
+			return 'Repository List clear';
 		} catch (error) {
-			console.error(`Error viewing repository: ${error}`);
+			return error.message;
 		}
 	};
 }
