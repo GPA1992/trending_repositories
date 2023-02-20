@@ -10,13 +10,15 @@ export default function RepositoryCard(props: TRepoCard) {
 			<div className="project-info">
 				<div className="icon-name">
 					<GoRepo />
-					<h3>{props.ownerAndRepoName}</h3>
+					<a href={props.repoUrl} target="_blank" rel="noreferrer">
+						{props.ownerAndRepoName}
+					</a>
 				</div>
 				<div>
 					<p>{props.description}</p>
 				</div>
 				<div className="icon-box">
-					<div className="language-icon"></div>
+					<div className={`lang-${props.language}`}></div>
 					<p>{props.language}</p>
 					<BsStar />
 					<p>{props.stars}</p>
@@ -24,7 +26,9 @@ export default function RepositoryCard(props: TRepoCard) {
 					<p>{props.forks}</p>
 				</div>
 			</div>
-			<div className="avatar-img">Avatar</div>
+			<div className="avatar-img">
+				<img src={props.avatar} alt="" />
+			</div>
 		</div>
 	);
 }

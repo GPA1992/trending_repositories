@@ -4,6 +4,8 @@ type TRepoCard = {
 	language: string;
 	stars: number;
 	forks: number;
+	avatar: string;
+	repoUrl: string;
 };
 
 export { TRepoCard };

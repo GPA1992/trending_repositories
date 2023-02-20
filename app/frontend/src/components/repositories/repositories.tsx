@@ -3,13 +3,14 @@ import { requestData } from '../../services/api';
 import RepositoryCard from '../repositoryCard/repositoryCard';
 import { TRepositoryUtils } from '../../types/types';
 import './repositories.styles.sass';
+import NavigateBar from '../navigateBar/navigateBar';
 
 export default function Repositories() {
 	const [repositories, setRepositories] = useState<any[]>();
 
 	useEffect(() => {
 		async function fetchRepositories() {
-			const data = await requestData('/repositories/typescript');
+			const data = await requestData('/repositories/php');
 			setRepositories(data);
 		}
 		fetchRepositories();
@@ -17,6 +18,7 @@ export default function Repositories() {
 
 	return (
 		<div className="repository-list">
+			<NavigateBar />
 			{repositories?.map((repo: TRepositoryUtils, index) => (
 				<div key={index}>
 					<RepositoryCard
@@ -25,6 +27,8 @@ export default function Repositories() {
 						language={repo.language}
 						stars={repo.stars}
 						forks={repo.forks}
+						avatar={repo.ownerAvatar}
+						repoUrl={repo.repoLink}
 					/>
 				</div>
 			))}
