@@ -1,10 +1,10 @@
 import { App } from './app';
-import trendingReposAtt from './services/repository/utils/trendingRepoAttOnDB';
+import trendingReposAtt from './services/repository/utils/refreshTrendingRepoListOnDbPerHour';
 
 
 import 'dotenv/config';
 
-/* trendingReposAtt(); */
+trendingReposAtt();
 const PORT = process.env.APP_PORT || 3001;
 
 new App().start(PORT);
