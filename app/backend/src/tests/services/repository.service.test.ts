@@ -2,9 +2,9 @@ import * as sinon from 'sinon';
 import * as chai from 'chai';
 import chaiHttp = require('chai-http');
 import _ from 'lodash';
-import { repositoriesToSaveMock, allRepositoriesResponseFromDBMock, repositoriesBylanguage } from './mock/repository.mock';
-import repositoryModel from '../database/models/repository.model';
-import { GithubAPIService } from '../services/index';
+import { repositoriesToSaveMock, allRepositoriesResponseFromDBMock, repositoriesBylanguage } from '../mock/repository.mock';
+import repositoryModel from '../../database/models/repository.model';
+import { GithubAPIService } from '../../services/index';
 
 const { expect } = chai;
 chai.use(chaiHttp);

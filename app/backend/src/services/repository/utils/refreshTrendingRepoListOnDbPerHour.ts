@@ -1,20 +1,20 @@
 import { GithubAPIService }from '../..';
-import FetchGithubRepository from './fetchRepository';
+import FetchGithubRepository from './generateTrendingList';
 import languages from '../../../utils/languageList';
 
 
 const trendingReposAtt = async () => {
 	await GithubAPIService.deletaAllRepository();
 	languages.forEach(async (lang) => {
-		const actualLanguage = await FetchGithubRepository.fetchRepositories(lang);
+		const actualLanguage = await FetchGithubRepository.generateList(lang);
 		await GithubAPIService.saveRepositories(actualLanguage);
 	});
 	console.log('REPOSITORIOS ATUALIZADOS');	
 };
 
   
-const fiveHoursToAttRepoList = 5 * 60 * 60 * 1000;
+const oneHoursToAttRepoList = 1 * 60 * 60 * 1000;
   
-setInterval(trendingReposAtt, fiveHoursToAttRepoList);
+setInterval(trendingReposAtt, oneHoursToAttRepoList);
 
 export default trendingReposAtt;

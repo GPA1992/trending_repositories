@@ -1,9 +1,9 @@
 import sinon from 'sinon';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import { repositoriesBylanguage, allRepositoriesResponseGrouped } from './mock/repository.mock';
-import RepositoryController from '../controllers/respository.controller';
-import { GithubAPIService } from '../services';
+import { repositoriesBylanguage, allRepositoriesResponseGrouped } from '../mock/repository.mock';
+import RepositoryController from '../../controllers/respository.controller';
+import { GithubAPIService } from '../../services';
 
 chai.use(chaiHttp);
 const expect = chai.expect;

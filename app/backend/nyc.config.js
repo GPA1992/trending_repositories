@@ -9,7 +9,8 @@ module.exports = {
 		'src/utils',
 		'src/types',
 		'src/routes ',
-		'src/server.ts'
+		'src/server.ts',
+		'src/services/repository/utils/refreshTrendingRepoListOnDbPerHour.ts'
 	],
 	include: ['src/**/*.ts']
 };
