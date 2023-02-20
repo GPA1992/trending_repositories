@@ -2,7 +2,7 @@
 
 .navigate-bar
     display: flex
-    flex-direction: row
+    flex-direction: column
     align-items: center
     justify-content: space-evenly
     background-color: variables.$grey-color
@@ -10,4 +10,22 @@
     border-top-left-radius: 5px
     border-top-right-radius: 5px
     width: 100%
-    height: 50px
+    height: 100px
+    font-family: MonaSansBold
+    font-size: 18px
+    color: variables.$font-color
+
+    .buttons
+        display: flex
+        flex-direction: row
+        align-items: center
+        justify-content: space-evenly
+        width: 100%
+        margin: 5px
+    button
+        font-family: MonaSansSemiBold
+        color: variables.$font-color
+        padding: 8px
+        width: 150px
+        background-color: variables.$grey-color
+        border-radius: 5px

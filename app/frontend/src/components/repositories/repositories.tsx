@@ -4,17 +4,21 @@ import RepositoryCard from '../repositoryCard/repositoryCard';
 import { TRepositoryUtils } from '../../types/types';
 import './repositories.styles.sass';
 import NavigateBar from '../navigateBar/navigateBar';
+import useGlobalContext from '../../hooks/useGlobalContext';
 
 export default function Repositories() {
-	const [repositories, setRepositories] = useState<any[]>();
+	const [repositories, setRepositories] = useState<TRepositoryUtils[]>();
+	const { language } = useGlobalContext();
 
 	useEffect(() => {
 		async function fetchRepositories() {
-			const data = await requestData('/repositories/php');
+			const data = await requestData(
+				`/repositories/${language.toLocaleLowerCase()}`
+			);
 			setRepositories(data);
 		}
 		fetchRepositories();
-	}, []);
+	}, [language]);
 
 	return (
 		<div className="repository-list">

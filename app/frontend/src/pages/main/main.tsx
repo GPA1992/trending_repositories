@@ -2,6 +2,7 @@ import React from 'react';
 import Repositories from '../../components/repositories/repositories';
 import Header from '../../components/header/header';
 import './main.styles.sass';
+import Footer from '../../components/footer/footer';
 
 function Main() {
 	return (
@@ -10,6 +11,7 @@ function Main() {
 			<main>
 				<Repositories />
 			</main>
+			<Footer />
 		</body>
 	);
 }
