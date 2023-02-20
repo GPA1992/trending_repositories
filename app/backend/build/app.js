@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.App = void 0;
 const express_1 = __importDefault(require("express"));
 const routes_1 = require("./routes");
+const cors_1 = __importDefault(require("cors"));
 class App {
     constructor() {
         this.app = (0, express_1.default)();
@@ -19,6 +20,7 @@ class App {
             res.header('Access-Control-Allow-Headers', '*');
             next();
         };
+        this.app.use((0, cors_1.default)());
         this.app.use(express_1.default.json());
         this.app.use(accessControl);
         this.app.use('/repositories', routes_1.repositoryRoute);

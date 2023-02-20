@@ -6,9 +6,8 @@ services:
       - 5173:5173
     working_dir: /app-frontend
     restart: 'always'
-    command: dev
     volumes:
-      - ./frontend/src:/app-frontend/src
+      - ./frontend:/app-frontend
     depends_on:
       backend:
         condition: service_healthy
@@ -25,7 +24,7 @@ services:
     working_dir: /app-backend
     command: dev
     volumes:
-      - ./backend/src:/app-backend/src
+      - ./backend:/app-backend
     depends_on:
       db:
         condition: service_healthy

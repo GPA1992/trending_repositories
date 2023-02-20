@@ -12,7 +12,7 @@ type TRepositoryUtils = {
 }
 
 type TRepositoryUtilsByLanguage = {
-    'c++': TRepositoryUtils[],
+    TypeScript: TRepositoryUtils[],
     PHP: TRepositoryUtils[]
     JavaScript: TRepositoryUtils[]
     Python: TRepositoryUtils[]
