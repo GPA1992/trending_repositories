@@ -2,10 +2,10 @@ import { Request, Response } from 'express';
 import { GithubAPIService} from '../services';
 
 export default class RepositoryController {
-	public static findRepositoriesByLanguage = async (req: Request, res: Response) => {
+	public static listRepositoriesByLanguage = async (req: Request, res: Response) => {
 		try {
 			const { language } = req.params;
-			const data = await GithubAPIService.findRepositoryByLanguage(language as string);            
+			const data = await GithubAPIService.listRepositoryByLanguage(language as string);            
 			return res.status(200).json(data);
 		} catch (error) {
 			return res.status(500).json(error.message);

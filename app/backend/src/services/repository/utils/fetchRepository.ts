@@ -33,7 +33,7 @@ class FetchGithubRepository {
 			forks: item.forks_count,
 			language: item.language,
 			repoLink: item.html_url
-		})).sort((a, b) => b.stars - a.stars);
+		}));
    
 		return repositories;
 	};
