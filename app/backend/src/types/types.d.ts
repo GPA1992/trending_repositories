@@ -1,4 +1,5 @@
-type RepositoryUtils = {
+type TRepositoryUtils = {
+    id?: number
     owner: string,
     ownerRepo: string,
     ownerAvatar: string,
@@ -7,10 +8,18 @@ type RepositoryUtils = {
     stars: number,
     forks: number,
     language: string,
-    repoLink: string
+    repoLink: string,
 }
 
-type RepositoryResponse = {
+type TRepositoryUtilsByLanguage = {
+    TypeScript: TRepositoryUtils[],
+    PHP: TRepositoryUtils[]
+    JavaScript: TRepositoryUtils[]
+    Python: TRepositoryUtils[]
+    Java: TRepositoryUtils[]
+}
+
+type TRepositoryResponse = {
     owner: {
         login: string,
         avatar_url: string,
@@ -24,4 +33,4 @@ type RepositoryResponse = {
     html_url: string
 }
 
-export { RepositoryUtils, RepositoryResponse }
+export { TRepositoryUtils, TRepositoryResponse, TRepositoryUtilsByLanguage };

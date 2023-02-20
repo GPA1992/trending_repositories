@@ -9,6 +9,7 @@ const router = express.Router();
 
 
 
-router.get('/',);
+router.get('/:language', repositoryController.findRepositoriesByLanguage);
+router.get('/', repositoryController.listAllRepositories);
 
 export default router;

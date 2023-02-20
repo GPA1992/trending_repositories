@@ -1,3 +1,3 @@
-import GithubAPIService from './repository/githubAPIService.service'
+import GithubAPIService from './repository/githubAPIService.service';
 
-export { GithubAPIService }
+export { GithubAPIService };

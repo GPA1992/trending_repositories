@@ -1,0 +1,84 @@
+@use '../../styles/variables'
+
+.repository-card
+    display: flex
+    width: 100%
+    height: 120px
+    border: 1px rgba(173, 186, 199, 0.288) solid
+    border-top: none
+
+.project-info
+    display: flex
+    flex-direction: column
+    justify-content: space-evenly
+    width: 80%
+    margin: 10px
+    p
+        font-family: MonaSans
+        font-size: 14px
+        color: variables.$font-color
+
+.avatar-img
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    margin: 10px
+    width: 20%
+    img
+        width: 60px
+        border-radius: 50%
+
+.icon-box
+    display: flex
+    align-items: center
+    p
+        margin: 0px 10px 0px 10px
+        font-family: MonaSans
+        font-size: 12px
+    svg
+        color: variables.$font-color
+
+.icon-name
+    display: flex
+    flex-direction: row
+    align-items: center
+    svg
+        height: 18px
+        width: 13px
+        color: variables.$font-color
+    a
+        margin: 0px 0px 0px 10px
+        color: variables.$blue-color
+        font-family: MonaSans
+        font-size: 20px
+        text-decoration: none
+
+.lang-Java
+    height: 10px
+    width: 10px
+    background-color: white
+    border-radius: 50%
+
+.lang-JavaScript
+    height: 10px
+    width: 10px
+    background-color: #F0DB4F
+    border-radius: 50%
+
+.lang-TypeScript
+    height: 10px
+    width: 10px
+    background-color: #007acc
+    border-radius: 50%
+
+.lang-Python
+    height: 10px
+    width: 10px
+    background-color: #007acc
+    border-radius: 50%
+
+.lang-PHP
+    height: 10px
+    width: 10px
+    background-color: #AEB2D5
+    border-radius: 50%
