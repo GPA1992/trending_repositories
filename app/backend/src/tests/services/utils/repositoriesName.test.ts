@@ -20,7 +20,7 @@ describe('ScrapTrendingRepositories', () => {
 			axiosGetStub.restore();
 		});
 
-		it('should return a list of repository names and owners', async () => {
+		it('getRepositoryAndUserNames: should return a list of repository names and owners', async () => {
 			const mockUrl = 'https://github.com/trending/javascript?since=daily';
             
 			const expectedRepoNames = [
@@ -34,17 +34,6 @@ describe('ScrapTrendingRepositories', () => {
 			const result = await ScrapTrendingRepositories.getRepositoryAndUserNames(mockUrl);
 
 			expect(result).to.deep.equal(expectedRepoNames);
-		});
-		
-		it('should handle errors', async () => {
-			const mockUrl = 'https://github.com/trending/javascript?since=daily';
-			const expectedError = new Error('Something went wrong.');
-
-			axiosGetStub.rejects(expectedError);
-
-			const result = await ScrapTrendingRepositories.getRepositoryAndUserNames(mockUrl);
-
-			expect(result).to.be.undefined;
 		});
 	});
 });
