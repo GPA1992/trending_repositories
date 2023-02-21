@@ -26,7 +26,7 @@ A aplicação pode ser rodada localmente ou conteinerizada com o docker, o backe
 
 Para rodar com o docker, basta definir as variáveis de ambiente e as portas de acordo com a escolha do usuário dentro do docker-compose no diretório `src/app` e digitar o comando `docker-compose up -d --build` no terminal.
 
--   Lembre-se de parar o `mysql` se estiver usando localmente na porta padrão (`3306`), ou adapte, caso queria fazer uso da aplicação em containers
+-   Lembre-se de parar o `mysql` se estiver usando localmente na porta padrão (`3306`), ou adapte, caso queira fazer uso da aplicação em containers
 -   Para parar o mysql digite: `systemctl stop mysql`
 
 -   Serão iniciados os containers: `app_backend`, `app_frontend` e `db`  
@@ -35,8 +35,7 @@ Para rodar com o docker, basta definir as variáveis de ambiente e as portas de 
 
 ## Para rodar Localmente
 
-Para rodar locamente, após instalar as dependencias, é necessario declarar as variaveis de ambiente no .env e acessar as pastas para rodar os comandos que startam as aplicações.
-
+Para rodar localmente, após instalar as dependências, é necessário declarar as variáveis de ambiente no .env e acessar as pastas para rodar os comandos que startam as aplicações.
 
 > /app/backend
 
@@ -67,7 +66,7 @@ Para rodar locamente, após instalar as dependencias, é necessario declarar as 
 
 -  `npm run dev`
 
-> Esse comando executa o teste automatico de todas as camadas da aplicação.
+> Esse comando executa o teste automático de todas as camadas da aplicação.
 
 -  `npm run test`
 
@@ -118,7 +117,7 @@ Para ter acesso a descrição detalhada de cada um, após rodar o projeto acesse
 
  <br>
 
-Por padrão o projeto esta rodando na porta 3001.
+Por padrão o projeto está rodando na porta 3001.
 
 > ### http://localhost:3001/documentation/
 
