@@ -21,8 +21,8 @@
     "@types/node": "^18.11.18",
     "@types/sequelize": "^4.28.14",
     "@types/sinon": "^10.0.13",
-    "@typescript-eslint/eslint-plugin": "^5.47.1",
-    "@typescript-eslint/parser": "^5.47.1",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "chai": "^4.3.7",
     "chai-http": "^4.3.0",
     "cheerio": "^1.0.0-rc.12",
@@ -42,6 +42,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "sequelize": "^6.28.0"
+    "sequelize": "^6.28.0",
+    "swagger-ui-express": "^4.6.1"
   }
 }

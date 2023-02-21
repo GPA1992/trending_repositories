@@ -1,0 +1,222 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Featured Repository",
+        "version": "1.0.0",
+        "description": "Aplicação que lista os repositórios destaques das linguagens:  TypeSCript, JavaScript, Python, Java, PHP consumindo a API do github “https://api.github.com/”.",
+        "contact": {
+            "email": "gabrielproencaaraujo@gmail.com"
+        }        
+    },
+    "server": [
+        {
+            "url": "http://localhost:3001/",
+            "description": "Aplicação Local"
+        }
+    ],
+    "schemes": [
+        "https",
+        "http"
+        ],
+    "paths": {
+        "/repositories": {
+            "get": {
+                "summary": "Todos os repositórios agrupados por linguagem" ,
+                "description": "Nesse endpoint, os repositórios que estão em destaque na página de Trending do github, das linguagens: TypeSCript, JavaScript, Python, Java, PHP   são listados de maneira agrupada.",
+                "tags":["Grouped Trending Repositories"],
+                 "responses": {
+                     "200": {
+                         "description": "Todos os repositórios agrupados por linguagem: TypeSCript, JavaScript, Python, Java, PHP",
+                         "content": {
+                            "application/json": {
+                                "schema" :{
+                                    "items": {
+                                        "$ref": "#/components/schemas/RepositoryGroupedBylanguage"
+                                    }
+                                    
+                                }
+                            }
+                         }
+                     }
+                 }
+             }
+        },
+        "/repositories/{language}": {
+            "get": {
+                "summary": "Todos os repositórios de uma linguagem especifica" ,
+                "description": "Nesse endpoint os repositório são exibidos de acordo a linguagem definida no parâmetro {language} da URL, as linguagens válidas são: TypeScript, JavaScript, Python, Java, PHP.",
+                "tags":["Repository by language"],
+                "parameters": [
+                    {
+                        "name": "language",
+                        "in": "path",
+                        "description": "nome de uma linguagem: TypeScript, JavaScript, Python, Java, PHP",
+                        "required": true
+                    }
+                ],
+                 "responses": {
+                     "200": {
+                         "description": "Os repositórios que estão em destaque na pagina de Trending do Github de uma das linguagens: TypeScript, JavaScript, Python, Java, PHP.",
+                         "content": {
+                            "application/json": {
+                                "schema" :{
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/RepositoryByLanguage"
+                                    }
+                                    
+                                }
+                            }
+                         }
+                     },
+                     "404" : {
+                        "description": "Mensagem caso a linguagem não exista no banco de dados",
+                        "content": {
+                            "application/json": {
+                                "schema" :{
+                                    "type": "object",
+                                    "$ref": "#/components/schemas/Message"                                   
+                                },
+                                "examples": {
+                                    "RepositoryLanguage": {
+                                        "value": {
+                                            "message": "Language does not exist in the database"
+                                        }
+                                    }
+                                }
+                            }
+                         }
+                    }
+                 }
+             }
+        }       
+    },
+    "components": {
+        "schemas": {
+            "RepositoryByLanguage" : {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "number",
+                        "example": 1
+                    },
+                    "owner": {
+                        "type": "string",
+                        "example": "liupan1890"
+                    }, 
+                    "ownerRepo": {
+                        "type": "string",
+                        "example": "https://github.com/liupan1890"
+                    },
+                    "ownerAvatar": {
+                        "type": "string",
+                        "example": "https://avatars.githubusercontent.com/u/67817756?v=4"
+                    },
+                    "repoName": {
+                        "type": "string",
+                        "example":  "aliyunpan"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example":  "阿里云盘小白羊版  阿里云盘PC版 aliyundriver"
+                    },
+                    "stars": {
+                        "type": "number",
+                        "example":  10231
+                    },
+                    "forks": {
+                        "type": "number",
+                        "example":  1024
+                    },
+                    "language": {
+                        "type": "string",
+                        "example":  "TypeScript"
+                    },
+                    "repoLink": {
+                        "type": "string",
+                        "example": "https://github.com/liupan1890/aliyunpan"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "example": "2023-02-21T13:35:34.000Z"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "example": "2023-02-21T13:35:34.000Z"
+                    } 
+                }
+            },
+            "RepositoryGroupedBylanguage": {
+                "type": "object",
+                "properties": {
+                    "Language": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "integer",
+                                    "example": 1
+                                },
+                                "owner": {
+                                    "type": "string",
+                                    "example": "microsoft"
+                                },
+                                "ownerRepo": {
+                                    "type": "string",
+                                    "example": "https://github.com/microsoft"
+                                },
+                                "ownerAvatar": {
+                                    "type": "string",
+                                    "example": "https://avatars.githubusercontent.com/u/6154722?v=4"
+                                },
+                                "repoName": {
+                                    "type": "string",
+                                    "example": "Web-Dev-For-Beginners"
+                                },
+                                "description": {
+                                    "type": "string",
+                                    "example": "24 Lessons, 12 Weeks, Get Started as a Web Developer"
+                                },
+                                "stars": {
+                                    "type": "integer",
+                                    "example": 66136
+                                },
+                                "forks": {
+                                    "type": "integer",
+                                    "example": 10339
+                                },
+                                "language": {
+                                    "type": "string",
+                                    "example": "JavaScript"
+                                },
+                                "repoLink": {
+                                    "type": "string",
+                                    "example": "https://github.com/microsoft/Web-Dev-For-Beginners"
+                                },
+                                "createdAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "example": "2023-02-21T14:07:41.000Z"
+                                },
+                                "updatedAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "example": "2023-02-21T14:07:41.000Z"
+                                }
+                            }
+                        }
+                    }
+                }
+            },            
+            "Message" : {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -9,27 +9,27 @@ import ScrapTrendingRepositories from '../../../services/repository/utils/scrapR
 chai.use(chaiHttp);
 
 describe('ScrapTrendingRepositories', () => {
-	describe('getRepositoryAndUserNames', () => {
-		let axiosGetStub: sinon.SinonStub;
+    describe('getRepositoryAndUserNames', () => {
+        let axiosGetStub: sinon.SinonStub;
 
-		beforeEach(() => {
-			axiosGetStub = sinon.stub(axios, 'get');
-		});
+        beforeEach(() => {
+            axiosGetStub = sinon.stub(axios, 'get');
+        });
 
-		afterEach(() => {
-			axiosGetStub.restore();
-		});
+        afterEach(() => {
+            axiosGetStub.restore();
+        });
 
-		it('getRepositoryAndUserNames: should return a list of repository names and owners', async () => {
-			const mockUrl = 'https://github.com/trending/javascript?since=daily';
+        it('getRepositoryAndUserNames: should return a list of repository names and owners', async () => {
+            const mockUrl = 'https://github.com/trending/javascript?since=daily';
             
 
 
-			axiosGetStub.resolves({ data: trendingRepositoriesHtmlBody });
+            axiosGetStub.resolves({ data: trendingRepositoriesHtmlBody });
 
-			const result = await ScrapTrendingRepositories.getRepositoryAndUserNames(mockUrl);
+            const result = await ScrapTrendingRepositories.getRepositoryAndUserNames(mockUrl);
 
-			expect(result).to.deep.equal(expectedRepoNamesFromRepositoriesHtmlBody);
-		});
-	});
+            expect(result).to.deep.equal(expectedRepoNamesFromRepositoriesHtmlBody);
+        });
+    });
 });
