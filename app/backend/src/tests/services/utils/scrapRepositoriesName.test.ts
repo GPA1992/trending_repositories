@@ -4,7 +4,7 @@ import chaiHttp from 'chai-http';
 import sinon from 'sinon';
 import axios from 'axios';
 import { trendingRepositoriesHtmlBody, expectedRepoNamesFromRepositoriesHtmlBody } from '../../mock/repository.mock';
-import ScrapTrendingRepositories from '../../../services/repository/utils/repositoriesName';
+import ScrapTrendingRepositories from '../../../services/repository/utils/scrapRepositoriesName';
 
 chai.use(chaiHttp);
 

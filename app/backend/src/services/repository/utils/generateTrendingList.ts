@@ -1,11 +1,12 @@
-import repositoriesName from './repositoriesName';
+import scrapRepositoriesName from './scrapRepositoriesName';
 import { TRepositoryUtils, TRepositoryResponse } from '../../../types/types';
 import FetchRepositoriesData from './fetchRepositoryFetchRepositoriesData';
 import 'dotenv/config';
 
 class GenerateTrendingList {
 	static generateList = async (language: string): Promise<TRepositoryUtils[]> => {
-		const repoList = await repositoriesName.getRepositoryAndUserNames(`https://github.com/trending/${language}?since=daily`);
+
+		const repoList = await scrapRepositoriesName.getRepositoryAndUserNames(`https://github.com/trending/${language}?since=daily`);
  
 		const fetchTrendingRepositories: TRepositoryResponse[] = await FetchRepositoriesData.fetchData(repoList);   
     

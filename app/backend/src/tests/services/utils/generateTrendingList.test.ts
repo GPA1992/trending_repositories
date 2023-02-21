@@ -3,7 +3,7 @@ import sinon from 'sinon';
 
 import FetchRepositoriesData from '../../../services/repository/utils/fetchRepositoryFetchRepositoriesData';
 import GenerateTrendingList from '../../../services/repository/utils/generateTrendingList';
-import ScrapTrendingRepositories from '../../../services/repository/utils/repositoriesName';
+import ScrapTrendingRepositories from '../../../services/repository/utils/scrapRepositoriesName';
 
 
 describe('generateTrendingList', () => {
