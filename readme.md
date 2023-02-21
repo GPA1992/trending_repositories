@@ -36,6 +36,21 @@ Para rodar com o docker, basta definir as variáveis de ambiente e as portas de 
 
 -   A partir daqui os 3 containers estarão em funcionamento, e aplicação do frontend e backend estão rodando, você pode acessar elas no seu `http://localhost:<PORTA>`.
 
+## Localmente
+
+Para rodar locamente, após instalar as dependencias, é necessario declarar as variaveis de ambiente no .env e acessar as pastas para rodar os comandos que startam as aplicações.
+
+### `/app/backend` 
+
+> npm run dev
+
+
+### `/app/frontend` 
+
+> npm run dev
+
+
+
 
 <br>
 
