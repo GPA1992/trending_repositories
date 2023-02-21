@@ -14,7 +14,7 @@ class App {
 
         this.app.get('/', (req, res) => res.json({ ok: true }));
 
-        /* TrendingRepos.update(); */
+        TrendingRepos.update();
     }
 
     private config(): void {
