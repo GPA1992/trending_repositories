@@ -4,50 +4,50 @@ import { Op } from 'sequelize';
 import _ from 'lodash';
 
 class GithubAPIService {
-	static saveRepositories = async (repositories: TRepositoryUtils[]): Promise<void> => {
-		try {
-			await Repository.sync();
-			await Repository.bulkCreate(repositories);
-			console.log('Repositories saved successfully');
-		} catch (error) {
-			return error.message;
-		}
-	};
+    public saveRepositories = async (repositories: TRepositoryUtils[]): Promise<void> => {
+        try {
+            await Repository.sync();
+            await Repository.bulkCreate(repositories);
+            console.log('Repositories saved successfully');
+        } catch (error) {
+            return error.message;
+        }
+    };
 
-	static listRepositories = async (): Promise<Record<string, TRepositoryUtils[]>> => {
-		try {			
-			const repositories = await Repository.findAll({
-				where: {
-					language: {[Op.ne]: null},
-				},
-			});
+    public listRepositories = async (): Promise<Record<string, TRepositoryUtils[]>> => {
+        try {			
+            const repositories = await Repository.findAll({
+                where: {
+                    language: {[Op.ne]: null},
+                },
+            });
 
-			const groupedRepos= _.groupBy(repositories, 'language');	
+            const groupedRepos= _.groupBy(repositories, 'language');	
 				
-			return groupedRepos;
+            return groupedRepos;
 
-		} catch (error) {
-			return error.message;
-		}
-	};
+        } catch (error) {
+            return error.message;
+        }
+    };
 
-	static listRepositoryByLanguage = async (language: string): Promise<TRepositoryUtils[]> => {
-		try {
-			const repository = await Repository.findAll({ where: { language} });
-			return repository;
-		} catch (error) {
-			return error.message;
-		}
-	};
+    public listRepositoryByLanguage = async (language: string): Promise<TRepositoryUtils[]> => {
+        try {
+            const repository = await Repository.findAll({ where: { language} });
+            return repository;
+        } catch (error) {
+            return error.message;
+        }
+    };
 
-	static deletaAllRepository = async () => {
-		try {
-			await Repository.destroy({ where: {} });
-			return 'Repository List clear';
-		} catch (error) {
-			return error.message;
-		}
-	};
+    public deletaAllRepository = async () => {
+        try {
+            await Repository.destroy({ truncate: true });
+            return 'Repository List clear';
+        } catch (error) {
+            return error.message;
+        }
+    };
 }
 
-export default GithubAPIService;
+export default new GithubAPIService;

@@ -1,3 +1,3 @@
-import repositoryRoute from "./repository.routes";
+import repositoryRoute from './repository.routes';
 
-export { repositoryRoute }
+export { repositoryRoute };

@@ -2,7 +2,7 @@ import * as cheerio from 'cheerio';
 import axios from 'axios';
 
 class ScrapTrendingRepositories {
-	static  getRepositoryAndUserNames = async (url) => {
+	public  getRepositoryAndUserNames = async (url) => {
 		try {
 			const response = await axios.get(url);
 			const html = response.data;
@@ -22,4 +22,4 @@ class ScrapTrendingRepositories {
 		}
 	};
 }
-export default ScrapTrendingRepositories;
+export default new ScrapTrendingRepositories;
