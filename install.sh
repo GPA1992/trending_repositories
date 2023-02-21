@@ -14,7 +14,7 @@ npm install
 
 
 cd ..
-cd /frontend
+cd frontend
 echo "------------------------------------"
 echo "instalando as dependencias do frontend"
 echo "------------------------------------"
