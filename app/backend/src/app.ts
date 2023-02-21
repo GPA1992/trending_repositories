@@ -27,7 +27,7 @@ class App {
             res.header('Access-Control-Allow-Headers', '*');
             next();
         };
-        this.app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+        this.app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
         this.app.use(cors());
         this.app.use(express.json());
         this.app.use(accessControl);
