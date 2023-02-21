@@ -415,3 +415,9 @@ export const trendingRepositoriesHtmlBody = `
         </body>
       </html>
     `;
+
+export const expectedRepoNamesFromRepositoriesHtmlBody = [
+	{ owner: 'user1', repo: 'repo1' },
+	{ owner: 'user2', repo: 'repo2' },
+	{ owner: 'user3', repo: 'repo3' },
+];

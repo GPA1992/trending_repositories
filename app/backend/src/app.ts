@@ -1,6 +1,7 @@
 import express from 'express';
 import { repositoryRoute } from './routes';
 import cors from 'cors';
+import TrendingRepos from './services/repository/utils/refreshTrendingRepoListOnDBPerHour';
 
 class App {
 	public app: express.Express;
@@ -10,6 +11,8 @@ class App {
 		this.config();
 
 		this.app.get('/', (req, res) => res.json({ ok: true }));
+
+		/* TrendingRepos.update(); */
 	}
 
 	private config(): void {
@@ -30,6 +33,10 @@ class App {
 
 	public start(PORT: string | number): void {
 		this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
+	}
+
+	static async updateTrendingRepos() {
+		await TrendingRepos.update();
 	}
 }
 
