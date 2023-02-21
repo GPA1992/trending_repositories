@@ -4,7 +4,9 @@
   "description": "app fullsstack",
   "main": "index.js",
   "scripts": {
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "install:all": "bash install.sh"
+
   },
   "keywords": [],
   "author": "",
