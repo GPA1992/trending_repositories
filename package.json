@@ -4,10 +4,6 @@
   "description": "app fullsstack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "npm-run-all --parallel install:**",
-    "install:backend": "cd app/backend && npm install",
-    "install:frontend": "cd app/frontend && npm install",
     "commit": "git-cz"
   },
   "keywords": [],
@@ -15,8 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
-    "git-conventional-commits": "^2.5.1",
-    "npm-run-all": "^4.1.5"
+    "git-conventional-commits": "^2.5.1"
   },
   "config": {
     "commitizen": {

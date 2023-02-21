@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "Featured Repository",
+        "title": "Trending Repositories",
         "version": "1.0.0",
         "description": "Aplicação que lista os repositórios destaques das linguagens:  TypeSCript, JavaScript, Python, Java, PHP consumindo a API do github “https://api.github.com/”.",
         "contact": {
