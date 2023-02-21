@@ -40,14 +40,15 @@ Para rodar com o docker, basta definir as variáveis de ambiente e as portas de 
 
 Para rodar locamente, após instalar as dependencias, é necessario declarar as variaveis de ambiente no .env e acessar as pastas para rodar os comandos que startam as aplicações.
 
-### `/app/backend` 
 
-> npm run dev
+> /app/backend
+
+ - `npm run dev`
 
 
-### `/app/frontend` 
+> /app/frontend
 
-> npm run dev
+-  `npm run dev`
 
 
 
@@ -56,27 +57,34 @@ Para rodar locamente, após instalar as dependencias, é necessario declarar as 
 
 # Comandos do `Backend` 
 
-> ### npm run db:init
 
--   Com esse comando a base de dados é criada junto com a tabela de repositorios.
+> Comando para iniciar o banco de dados e as tabelas
 
-> ### npm run db:reset
+- `npm run db:init`
 
--   Com esse comando a DB é dropada, reinicializada e alimentada de acordo com as migrations e seeds que estão em src/database. 
+ > Comando onde a DB é dropada, reinicializada e alimentada de acordo com as migrations e seeds que estão em src/database.
 
-> ### npm run dev
-- Com esse comando o servidor é iniciado com o nodemon localmente, que é uma ferramenta que permite que seja feito alterações em tempo real, sem a necessidade de resetar a API para checar as mudanças.
+- `npm run db:reset`
 
-> ### npm run test
-- Esse comando executa o teste automatico de todas as camadas da aplicação.
+>  Comando para iniciar o servidor com o nodemon.
 
-> ### npm run test:coverage
-- Esse comando executa o teste de cobertura da aplicação
+-  `npm run dev`
+
+> Esse comando executa o teste automatico de todas as camadas da aplicação.
+
+-  `npm run test`
+
+>  Esse comando executa o teste de cobertura da aplicação
+
+ - `npm run test:coverage`
+
 
 # Comandos do `Frontend`
 
-> ### npm run dev
-- Esse comando inicia a aplicação localmente.
+>  Esse comando inicia a aplicação localmente.
+ 
+- `npm run dev`
+
 
 <br>
 
