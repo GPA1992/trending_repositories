@@ -8,24 +8,21 @@ A aplicação pode ser rodada localmente ou conteinerizada com o docker, o backe
 
 <br>
 
-# Github `TOKEN`
+## Github `TOKEN`
 
 - Para que a aplicação funcione corretamente é necessário que o usuário gere um token na aba de Developer Settings no github e salve o mesmo em um `.env` na variável `GITHUB_TOKEN`, dentro do diretório do backend.
 
 <br>
 
-
-# Instalação e comandos
-
-<br>
-
 ## Dependencias
 
-> -   Rode o comando `npm run install:all` na raiz do projeto
+> Rode o comando para instalar todas as dependencias (app/backend e app/frontend)
+
+- `npm run install:all`
 
 <br>
 
-## Docker
+## Para rodar com Docker
 
 Para rodar com o docker, basta definir as variáveis de ambiente e as portas de acordo com a escolha do usuário dentro do docker-compose no diretório `src/app` e digitar o comando `docker-compose up -d --build` no terminal.
 
@@ -36,7 +33,7 @@ Para rodar com o docker, basta definir as variáveis de ambiente e as portas de 
 
 -   A partir daqui os 3 containers estarão em funcionamento, e aplicação do frontend e backend estão rodando, você pode acessar elas no seu `http://localhost:<PORTA>`.
 
-## Localmente
+## Para rodar Localmente
 
 Para rodar locamente, após instalar as dependencias, é necessario declarar as variaveis de ambiente no .env e acessar as pastas para rodar os comandos que startam as aplicações.
 
@@ -84,6 +81,12 @@ Para rodar locamente, após instalar as dependencias, é necessario declarar as 
 >  Esse comando inicia a aplicação localmente.
  
 - `npm run dev`
+
+# Comandos do `app`
+
+>  Esse comando mostra os logs dos conteiners que estão rodando.
+ 
+- `npm run logs`
 
 
 <br>
