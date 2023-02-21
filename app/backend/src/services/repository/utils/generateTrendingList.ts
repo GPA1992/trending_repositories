@@ -18,7 +18,7 @@ class GenerateTrendingList {
             description: item.description,
             stars: item.stargazers_count,
             forks: item.forks_count,
-            language: item.language,
+            language: item.language.toLocaleLowerCase(),
             repoLink: item.html_url
         }));
    
