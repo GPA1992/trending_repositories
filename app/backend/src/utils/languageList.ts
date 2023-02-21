@@ -1,4 +1,4 @@
-const languages = ['javascript', 'python', 'java', 'php', 'TypeScript'];
+const languages = ['javascript', 'python', 'java', 'php', 'typescript'];
 
 export default languages;
 
