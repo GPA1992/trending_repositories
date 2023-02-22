@@ -8,7 +8,7 @@ export default function NavigateBar() {
 	const handleButtonClick = (
 		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
-		setLanguage(event.currentTarget.textContent);
+		setLanguage(event.currentTarget.textContent as string);
 	};
 	return (
 		<div className="navigate-bar">

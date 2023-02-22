@@ -9,7 +9,7 @@ const routes_1 = require("./routes");
 const cors_1 = __importDefault(require("cors"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swagger_json_1 = __importDefault(require("./swagger.json"));
-const refreshTrendingRepoListOnDBPerHour_1 = __importDefault(require("./services/repository/utils/refreshTrendingRepoListOnDBPerHour"));
+const refreshTrendingRepoListOnDBPerHour_1 = __importDefault(require("./services/repository/helpers/refreshTrendingRepoListOnDBPerHour"));
 class App {
     constructor() {
         this.app = (0, express_1.default)();
