@@ -2,7 +2,7 @@ FROM node:14-alpine
 
 EXPOSE 3001
 
-WORKDIR /app-backend
+WORKDIR /app-backend/src
 
 COPY package*.json .
 
