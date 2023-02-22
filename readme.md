@@ -19,6 +19,46 @@ A aplicação pode ser rodada localmente ou conteinerizada com o docker. O backe
 
 - Para que a aplicação funcione corretamente, é necessário que o usuário gere um token na aba de Developer Settings no github e salve o mesmo em um `.env` na variável `GITHUB_TOKEN`, dentro do diretório do backend.
 
+ <details>
+  <summary>Tutorial</summary>
+
+  1. Logado na sua conta, clique no seu icone de usuario e vá até `settings`
+
+  <img src="./assets/tokenTutorial/TOKEN-1.png" alt="Descrição da imagem">
+
+  <br>
+
+  2. Após isso no lado esquerdo da tela, navegue até o superior e clique em `Developer Settings`
+
+  <img src="./assets/tokenTutorial/TOKEN-2.png" alt="Descrição da imagem">
+
+  <br>
+
+  3. Então clique em `personal acess token` e `tokens classic`
+
+  <img src="./assets/tokenTutorial/TOKEN-3.png" alt="Descrição da imagem">
+
+  <br>
+
+  4. Clique em `Generate new token` e em `Generate new token (classic)`
+
+  <img src="./assets/tokenTutorial/TOKEN-4.png" alt="Descrição da imagem">
+
+  <br>
+
+  5. Marque apenas a opção `public_repo`
+
+  <img src="./assets/tokenTutorial/TOKEN-5.png" alt="Descrição da imagem">
+
+  <br>
+
+  5. Clique em `Generate Token` no final da pagina, e o sue token será exibido na tela.
+
+  <img src="./assets/tokenTutorial/TOKEN-6.png" alt="Descrição da imagem">
+
+
+</details>
+
 <br>
 
 ## Dependencias
@@ -26,6 +66,34 @@ A aplicação pode ser rodada localmente ou conteinerizada com o docker. O backe
 Para instalar todas as dependencias (app/backend e app/frontend), dentro da pasta `/app`, rode o comando:
 
 - `npm run install:all`
+
+## Variaveis de Ambiente
+
+- Explicação das variaveis de ambiente que podem ser configuradas no .env ou manualmente no arquivo `src/database/config/database.ts`
+
+<pre>
+  <code>
+import 'dotenv/config';
+import { Options } from 'sequelize';
+
+const config: Options = 
+    username: process.env.DB_USER || 'root', //Usuario do MYSQL local ou Conferir docker-compose(DB_USER)
+    password: process.env.DB_PASS || '123456', //Senha do MYSQL local ou Conferir docker-compose(DB_PASS)
+    database: 'name_db', /Nome da Database
+    host: process.env.DB_HOST || 'db', //Host da DB Local('localhost') ou Conferir docker-compose(DB_HOST) 
+    port: Number(process.env.DB_PORT) || 3002, //Porta do MYSQL local ou Conferir docker-compose(DB_PORT)
+    dialect: 'mysql',
+    dialectOptions: {
+        timezone: 'Z',
+    },
+    logging: false,
+};
+
+module.exports = config;
+  </code>
+</pre>
+
+
 
 ## Iniciar o banco de dados
 
