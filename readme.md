@@ -5,12 +5,12 @@
 O projeto Trending Repositories é uma aplicação fullstack responsável por coletar, armazenar e listar os repositórios que estão em destaque na página https://github.com/trending , utilizando a API https://api.github.com/.
 A aplicação pode ser rodada localmente ou conteinerizada com o docker, o backend foi construído com nodejs, express e sequelize e tem a função de atualizar a cada hora a lista de repositórios que estão em destaque das linguagens: TypeSCript, JavaScript, Python, Java, PHP. O frontend foi construído com react.
 
-## Deploy URL's da aplicação 
+> ## Deploy URL's da aplicação 
 
 ## <a href="https://trending-repositories.up.railway.app/">Frontend Live:  https://trending-repositories.up.railway.app</a>
 
-## <a href="https://trending-repositories.up.railway.app/repostitories">API Live: app/repostitories</a>
-## <a href="https://trending-repositories.up.railway.app/repostitories/javascript">API Live: app/repostitories/{language}</a>
+## <a href="https://api-trending-repositories.up.railway.app/repositories">API Live: app/repositories</a>
+## <a href="https://api-trending-repositories.up.railway.app/repositories/javascript">API Live: app/repositories/{language}</a>
 
 <br>
 
