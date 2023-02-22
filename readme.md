@@ -3,7 +3,7 @@
 ## Descrição
 
 O projeto Trending Repositories é uma aplicação fullstack responsável por coletar, armazenar e listar os repositórios que estão em destaque na página https://github.com/trending , utilizando a API https://api.github.com/.
-A aplicação pode ser rodada localmente ou conteinerizada com o docker, o backend foi construído com nodejs, express e sequelize e tem a função de atualizar a cada hora a lista de repositórios que estão em destaque das linguagens: TypeSCript, JavaScript, Python, Java, PHP. O frontend foi construído com react.
+A aplicação pode ser rodada localmente ou conteinerizada com o docker. O backend foi construído com nodejs, express e sequelize e tem a função de atualizar a cada hora a lista de repositórios que estão em destaque das linguagens: TypeSCript, JavaScript, Python, Java, PHP. O frontend foi construído com react.
 
 ## Deploy URL's da aplicação 
 
@@ -17,23 +17,41 @@ A aplicação pode ser rodada localmente ou conteinerizada com o docker, o backe
 # Instruções para instalação local
 ## Github `TOKEN`
 
-- Para que a aplicação funcione corretamente é necessário que o usuário gere um token na aba de Developer Settings no github e salve o mesmo em um `.env` na variável `GITHUB_TOKEN`, dentro do diretório do backend.
+- Para que a aplicação funcione corretamente, é necessário que o usuário gere um token na aba de Developer Settings no github e salve o mesmo em um `.env` na variável `GITHUB_TOKEN`, dentro do diretório do backend.
 
 <br>
 
 ## Dependencias
 
-> Rode o comando para instalar todas as dependencias (app/backend e app/frontend)
+Rode o comando para instalar todas as dependencias (app/backend e app/frontend):
 
 - `npm run install:all`
+
+## Iniciar o banco de dados
+
+Para que a aplicação funcione é necessario iniciar o banco de dados, para isso rode o comando no ambiente que estiver rodando a aplicação:
+
+### Localmente 
+Depois que a aplicação estiver configurada (`explicação de como configurar abaixo`) e estiver rodando, se estiver rodando localmente, basta rodar o comando na pasta raiz do projeto:
+
+- app/backend -> `npm run db:init`
+
+### Docker 
+Depois que subir os container’s e a aplicação estiver rodando com o docker (`explicação de como configurar abaixo`) se estiver tudo certo, é necessário acessar o container, para isso digite:
+`docker exec -it app-back-trending-repo sh`, e dentro do terminal do container que sera mostrado digite:
+
+
+- `npm run db:init`
+
+> Os outros comandos disponíveis também devem ser executados dentro do container, caso esteja rodando com docker.
 
 <br>
 
 ## Para rodar com Docker
 
-Para rodar com o docker, basta definir as variáveis de ambiente e as portas de acordo com a escolha do usuário dentro do docker-compose no diretório `src/app` e digitar o comando `docker-compose up -d --build` no terminal.
+Para rodar com o docker, basta definir as variáveis de ambiente e as portas de acordo com a escolha do usuário  (já existe uma configuração generica do compose e config/database.ts, e deve funcionar), dentro do docker-compose no diretório `src/app` e digitar o comando `docker-compose up -d --build` no terminal.
 
--   Lembre-se de parar o `mysql` se estiver usando localmente na porta padrão (`3306`), ou adapte, caso queira fazer uso da aplicação em containers
+-   Caso de algum conflito de portas com o mysql pare o `mysql` se estiver usando localmente na porta padrão (`3306`), ou adapte, caso queira fazer uso da aplicação em containers
 -   Para parar o mysql digite: `systemctl stop mysql`
 
 -   Serão iniciados os containers: `app_backend`, `app_frontend` e `db`  

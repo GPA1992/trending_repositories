@@ -1,6 +1,7 @@
 version: '3.9'
 services:
   frontend:
+    container_name: app-front-trending-repo
     build: ./frontend
     ports:
       - 5173:5173
@@ -16,14 +17,13 @@ services:
       timeout: 10s
       retries: 5
   backend:
-    container_name: app_backend
+    container_name: app-back-trending-repo
     user: node
     build: ./backend
     restart: 'always'
     ports:
       - 3001:3001
     working_dir: /app-backend
-    command: dev
     volumes:
       - ./backend:/app-backend
     depends_on:
