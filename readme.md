@@ -71,6 +71,8 @@ Para instalar todas as dependencias (app/backend e app/frontend), dentro da past
 
 - Explicação das variaveis de ambiente que podem ser configuradas no .env ou manualmente no arquivo `src/database/config/database.ts`
 
+> Observação: se for rodar com docker, muito provavelmente a aplicação ja deve funcionar com as variaveis que estão definidas internamente no docker-compose, caso de algum conflito de portas em uso, é necessario fazer a alteração, de qualquer forma segue a explicação das variaveis que serão utilizadas no database.ts
+
 <pre>
   <code>
 import 'dotenv/config';
