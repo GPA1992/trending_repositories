@@ -30,7 +30,7 @@ describe('generateTrendingList', () => {
     it('generateList: should return an array of repositories', async () => {
         const language = 'javascript';
         const mockRepoList = [{ owner: 'octocat', repo: 'Hello-World' }];
-        const mockResponse = [      {        owner: { login: 'octocat', html_url: 'https://github.com/octocat', avatar_url: 'https://github.com/octocat.png' },        name: 'Hello-World',        description: 'This is your first repository',        stargazers_count: 10,        forks_count: 5,        language: 'JavaScript',        html_url: 'https://github.com/octocat/Hello-World'      }    ];
+        const mockResponse = [      {        owner: { login: 'octocat', html_url: 'https://github.com/octocat', avatar_url: 'https://github.com/octocat.png' },        name: 'Hello-World',        description: 'This is your first repository',        stargazers_count: 10,        forks_count: 5,        language: 'javascript',        html_url: 'https://github.com/octocat/Hello-World'      }    ];
         repositoriesNameStub.resolves(mockRepoList);
         fetchRepositoriesDataStub.resolves(mockResponse);
     
@@ -45,7 +45,7 @@ describe('generateTrendingList', () => {
                 description: 'This is your first repository',
                 stars: 10,
                 forks: 5,
-                language: 'JavaScript',
+                language: 'javascript',
                 repoLink: 'https://github.com/octocat/Hello-World'
             }
         ]);
