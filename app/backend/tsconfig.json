@@ -6,11 +6,10 @@
     "allowJs": true,                          
     "forceConsistentCasingInFileNames": true,                                              
     "skipLibCheck": true,                                 
-    "rootDir": "./src",
-    "outDir": "./build",
+    "rootDir": "src",
+    "outDir": "build",
     "typeRoots": ["./node_modules/@types"],
     "resolveJsonModule": true
   },
-  "include": ["src/**/*", "src/server.ts"],
-  "exclude": ["node_modules", "build"]
+  "include": ["src/**/*", "src/index.ts"],
 }
