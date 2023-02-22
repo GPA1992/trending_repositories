@@ -10,11 +10,54 @@ A aplicação pode ser rodada localmente ou conteinerizada com o docker. O backe
 ### <a href="https://trending-repositories.up.railway.app/">Frontend Live:  https://trending-repositories.up.railway.app</a>
 
 ### <a href="https://api-trending-repositories.up.railway.app/repositories">API Live: app/repositories</a>
+
 ### <a href="https://api-trending-repositories.up.railway.app/repositories/javascript">API Live: app/repositories/{language}</a>
+
+### <a href="https://api-trending-repositories.up.railway.app/documentation">API DOC Live: app/documentation</a>
+
+<br>
+
+# SwagerUI
+
+Para facilitar o entendimento do funcionamento de todos os endpoints e a dinâmica entre eles, essa API conta com um painel do SwagerUI, que demonstra cada endpoint e expõe a sua funcionalidade.
+
+
+ 
+ <details>
+  <summary>Exemplo</summary>
+  <img src="./assets/swagger.png" alt="Descrição da imagem">
+</details>
+
+<br>
+
+<a href="https://swagger.io/">Link do Swagger</a>
+
+Endpoints:
+
+-   get: /repositories
+-   get: /repositories/{language}
+
+Para ter acesso a descrição detalhada de cada um, após rodar o projeto acesse:
+<br>
+
+> ### localhost+`PORTA`+/documentation/.
+
+ <br>
+
+Por padrão o projeto está rodando na porta 3001.
+
+
+> ### http://localhost:3001/documentation/
+
+<br>
+
+> Antes é preciso instalar a aplicação.
 
 <br>
 
 # Instruções para instalação local
+
+
 ## Github `TOKEN`
 
 - Para que a aplicação funcione corretamente, é necessário que o usuário gere um token na aba de Developer Settings no github e salve o mesmo em um `.env` na variável `GITHUB_TOKEN`, dentro do diretório do backend.
@@ -182,37 +225,4 @@ Para rodar localmente, após instalar as dependências, é necessário declarar 
  
 - `npm run logs`
 
-
-<br>
-
-# SwagerUI
-
-Para facilitar o entendimento do funcionamento de todos os endpoints e a dinâmica entre eles, essa API conta com um painel do SwagerUI, que demonstra cada endpoint e expõe a sua funcionalidade.
-
-
- 
- <details>
-  <summary>Exemplo</summary>
-  <img src="./assets/swagger.png" alt="Descrição da imagem">
-</details>
-
-<br>
-
-<a href="https://swagger.io/">Link do Swagger</a>
-
-Endpoints:
-
--   get: /repositories
--   get: /repositories/{language}
-
-Para ter acesso a descrição detalhada de cada um, após rodar o projeto acesse:
-<br>
-
-> ### localhost+`PORTA`+/documentation/.
-
- <br>
-
-Por padrão o projeto está rodando na porta 3001.
-
-> ### http://localhost:3001/documentation/
 
