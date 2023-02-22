@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-import FetchRepositoriesData from '../../../services/repository/utils/fetchRepositoryFetchRepositoriesData';
-import GenerateTrendingList from '../../../services/repository/utils/generateTrendingList';
-import ScrapTrendingRepositories from '../../../services/repository/utils/scrapRepositoriesName';
+import FetchRepositoriesData from '../../../services/repository/helpers/fetchRepositoryFetchRepositoriesData';
+import GenerateTrendingList from '../../../services/repository/helpers/generateTrendingList';
+import ScrapTrendingRepositories from '../../../services/repository/helpers/scrapRepositoriesName';
 
 
 describe('generateTrendingList', () => {

@@ -4,7 +4,7 @@ import chaiHttp from 'chai-http';
 import sinon from 'sinon';
 import axios from 'axios';
 import { repoListFromGithubTrending, mockResponseFromGithubAPI } from '../../mock/repository.mock';
-import FetchGithubRepository from '../../../services/repository/utils/fetchRepositoryFetchRepositoriesData';
+import FetchGithubRepository from '../../../services/repository/helpers/fetchRepositoryFetchRepositoriesData';
 
 
 chai.use(chaiHttp);

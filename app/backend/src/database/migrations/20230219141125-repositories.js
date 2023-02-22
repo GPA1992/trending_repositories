@@ -19,11 +19,11 @@ module.exports = {
             },
             ownerAvatar: {
                 type: Sequelize.STRING,
-                allowNull: false,
+                allowNull: true,
             },
             repoName: {
                 type: Sequelize.STRING,
-                allowNull: false,
+                allowNull: true,
             },
             description: {
                 type: Sequelize.TEXT,
@@ -31,28 +31,28 @@ module.exports = {
             },
             stars: {
                 type: Sequelize.INTEGER,
-                allowNull: false,
+                allowNull: true,
             },
             forks: {
                 type: Sequelize.INTEGER,
-                allowNull: false,
+                allowNull: true,
             },
             language: {
                 type: Sequelize.STRING,
-                allowNull: false,
+                allowNull: true,
             },
             repoLink: {
                 type: Sequelize.STRING,
-                allowNull: false,
+                allowNull: true,
             },
             createdAt: {
                 type: Sequelize.DATE,
-                allowNull: false,
+                allowNull: true,
                 defaultValue: Sequelize.NOW,
             },
             updatedAt: {
                 type: Sequelize.DATE,
-                allowNull: false,
+                allowNull: true,
                 defaultValue: Sequelize.NOW,
             },
         });

@@ -23,6 +23,7 @@ Repository.init({
     },
     owner: {
         type: DataTypes.STRING,
+        allowNull: true,
     },
     ownerRepo: {
         type: DataTypes.STRING,
@@ -30,11 +31,11 @@ Repository.init({
     },
     ownerAvatar: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     repoName: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     description: {
         type: DataTypes.TEXT,
@@ -42,19 +43,19 @@ Repository.init({
     },
     stars: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     forks: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     language: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
     repoLink: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
     },
 }, {
     sequelize: db,

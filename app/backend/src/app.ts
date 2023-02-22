@@ -3,7 +3,7 @@ import { repositoryRoute } from './routes';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDoc from './swagger.json';
-import TrendingRepos from './services/repository/utils/refreshTrendingRepoListOnDBPerHour';
+import TrendingRepos from './services/repository/helpers/refreshTrendingRepoListOnDBPerHour';
 
 class App {
     public app: express.Express;
@@ -14,7 +14,7 @@ class App {
 
         this.app.get('/', (req, res) => res.json({ ok: true }));
 
-        TrendingRepos.update();
+        App.updateTrendingRepos();
     }
 
     private config(): void {

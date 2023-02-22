@@ -2,11 +2,11 @@ import 'dotenv/config';
 import { Options } from 'sequelize';
 
 const config: Options = {
-    username: process.env.DB_USER || 'root',
-    password: process.env.DB_PASS || '123456',
-    database: 'trending_repositories_db',
-    host: process.env.DB_HOST || 'db',
-    port: Number(process.env.DB_PORT) || 3002,
+    username: process.env.MYSQLUSER|| 'root',
+    password: process.env.MYSQLPASSWORD|| '123456',
+    database: process.env.MYSQLDATABASE || 'trending_repositories_db',
+    host: process.env.MYSQLHOST || 'db',
+    port: Number(process.env.MYSQLPORT) || 3002,
     dialect: 'mysql',
     dialectOptions: {
         timezone: 'Z',

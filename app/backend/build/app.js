@@ -15,7 +15,7 @@ class App {
         this.app = (0, express_1.default)();
         this.config();
         this.app.get('/', (req, res) => res.json({ ok: true }));
-        refreshTrendingRepoListOnDBPerHour_1.default.update();
+        App.updateTrendingRepos();
     }
     config() {
         const accessControl = (_req, res, next) => {
