@@ -60,7 +60,7 @@ Por padrão o projeto está rodando na porta 3001.
 
 ## Github `TOKEN`
 
-- Para que a aplicação funcione corretamente, é necessário que o usuário gere um token na aba de Developer Settings no github e salve o mesmo em um `.env` na variável `GITHUB_TOKEN`, dentro do diretório do backend.
+Para que a aplicação funcione corretamente, é necessário que o usuário gere um token na aba de Developer Settings no github e salve o mesmo em um `.env` na variável `GITHUB_TOKEN`, dentro do diretório do backend.
 
  <details>
   <summary>Tutorial</summary>
