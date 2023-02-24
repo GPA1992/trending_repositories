@@ -144,12 +144,12 @@ module.exports = config;
 
 Para que a aplicação funcione é necessario iniciar o banco de dados, então rode o comando no ambiente que estiver rodando a aplicação:
 
-- ## Localmente 
+ ### Localmente 
 Depois que a aplicação estiver configurada (`explicação de como configurar abaixo`) e estiver rodando, se estiver rodando localmente, basta rodar o comando na pasta raiz do projeto:
 
 - app/backend -> `npm run db:init`
 
-- ## Docker 
+ ### Docker 
 Depois que subir os container’s e a aplicação estiver rodando com o docker (`explicação de como configurar abaixo`) se estiver tudo certo, é necessário acessar o container, para isso digite:
 `docker exec -it app-back-trending-repo sh`, e dentro do terminal do container que sera mostrado digite:
 
